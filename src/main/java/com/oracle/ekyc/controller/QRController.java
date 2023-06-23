@@ -19,6 +19,6 @@ public class QRController {
     public String getNewQR() {
 
         Utils utils = new Utils();
-        return "SEVA" + utils.getRandomAlphabets() + utils.getNanoTime();
+        return "SEVA" + utils.randomizeString(utils.getRandomAlphabets() + utils.getNanoTime());
     }
 }

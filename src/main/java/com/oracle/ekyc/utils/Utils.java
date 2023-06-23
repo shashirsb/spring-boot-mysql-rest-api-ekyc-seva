@@ -33,4 +33,18 @@ public class Utils {
         return sb.toString();
     }
 
+    public static String randomizeString(String input) {
+        char[] _chars = input.toCharArray();
+
+        // Randomize the _chars by swapping with a random index
+        for (int i = _chars.length - 1; i > 0; i--) {
+            int j = (int) (Math.random() * (i + 1));
+            char temp = _chars[i];
+            _chars[i] = _chars[j];
+            _chars[j] = temp;
+        }
+
+        return new String(_chars);
+    }
+
 }
