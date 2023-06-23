@@ -1,0 +1,28 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Utils",
+            "request": "launch",
+            "mainClass": "com.oracle.ekyc.utils.Utils",
+            "projectName": "ekyc-mord"
+        },
+        {
+            "type": "java",
+            "name": "Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "EkycApplication",
+            "request": "launch",
+            "mainClass": "com.oracle.ekyc.EkycApplication",
+            "projectName": "ekyc-app-suite"
+        }
+    ]
+}

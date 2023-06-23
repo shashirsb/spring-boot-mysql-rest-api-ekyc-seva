@@ -1,0 +1,140 @@
+openapi: 3.0.0
+info:
+  title: eKYC Apply Scheme API
+  description: API endpoint for applying to a scheme using eKYC
+  version: 1.0.0
+servers:
+  - url: http://localhost
+paths:
+  /mord/ekyc/applyscheme:
+    post:
+      summary: Apply to a scheme using eKYC
+      requestBody:
+        description: Request body for applying to a scheme using eKYC
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                gr:
+                  type: boolean
+                  description: Indicates whether the applicant has a gazette notification or not
+                gr_lastupdate:
+                  type: string
+                  format: date
+                  description: The date of the latest gazette notification
+                aadhaar:
+                  type: boolean
+                  description: Indicates whether the applicant has an Aadhaar card or not
+                aadhaarID:
+                  type: string
+                  description: The Aadhaar card number of the applicant
+                secondaryID_type:
+                  type: string
+                  description: The type of secondary ID provided by the applicant (e.g. voter ID, driving license)
+                secondaryID:
+                  type: string
+                  description: The number of the secondary ID provided by the applicant
+                phoneno:
+                  type: integer
+                  description: The phone number of the applicant
+                age:
+                  type: integer
+                  description: The age of the applicant
+                firstname:
+                  type: string
+                  description: The first name of the applicant
+                middlename:
+                  type: string
+                  description: The middle name of the applicant (optional)
+                lastname:
+                  type: string
+                  description: The last name of the applicant
+                scheme:
+                  type: object
+                  description: Details of the scheme being applied for
+                  properties:
+                    name:
+                      type: string
+                      description: The name of the scheme being applied for
+                    date:
+                      type: string
+                      format: date
+                      description: The date when the application is being made
+              required:
+                - gr
+                - gr_lastupdate
+                - aadhaar
+                - aadhaarID
+                - secondaryID_type
+                - secondaryID
+                - phoneno
+                - age
+                - firstname
+                - lastname
+                - scheme
+      responses:
+        '200':
+          description: Application accepted
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  aadhaar:
+                    type: boolean
+                    description: Indicates whether the applicant has an Aadhaar card or not
+                  aadhaarID:
+                    type: string
+                    description: The Aadhaar card number of the applicant
+                  secondaryID_type:
+                    type: string
+                    description: The type of secondary ID provided by the applicant (e.g. voter ID, driving license)
+                  secondaryID:
+                    type: string
+                    description: The number of the secondary ID provided by the applicant
+                  application_status:
+                    type: string
+                    description: The status of the application (e.g. accepted)
+        '401':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  aadhaar:
+                    type: boolean
+                    description: Indicates whether the applicant has an Aadhaar card or not
+                  aadhaarID:
+                    type: string
+                    description: The Aadhaar card number of the applicant
+                  secondaryID_type:
+                    type: string
+                    description: The type of secondary ID provided by the applicant (e.g. voter ID, driving license)
+                  secondaryID:
+                    type: string
+                    description: The number of the secondary ID provided by the applicant
+                  application_status:
+                    type: string
+                    description: The status of the application (e.g. not accepted, data missing)
+        '402':
+          description: Invalid scheme name
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  aadhaar:
+                    type: boolean
+                    description: Indicates whether the applicant has an Aadhaar card or not
+                  aadhaarID:
+                    type: string
+                    description: The Aadhaar card number of the applicant
+                  secondaryID:
+                    type: string
+                    description: The number of the secondary ID provided by the applicant
+                  application_status:
+                    type: string
+                    description: The status of the application (e.g. not accepted, data missing)
