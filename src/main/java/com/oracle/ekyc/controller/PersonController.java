@@ -358,7 +358,7 @@ public class PersonController {
             // Make the API call
             String apiUrl = "http://152.67.30.46:8080/checkimg";
             System.out.println("-----------------3");
-            faceresponse = restTemplate.postForObject(apiUrl, request, String.class);
+            //faceresponse = restTemplate.postForObject(apiUrl, request, String.class);
             System.out.println("-----------------4");
         } catch (Exception e) {
             System.out.print(e);
